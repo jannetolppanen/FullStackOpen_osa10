@@ -1,6 +1,7 @@
 import { View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import { Pressable } from 'react-native';
+import { Link } from 'react-router-native';
 import Text from './Text';
 import theme from '../theme';
 
@@ -18,12 +19,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppBarTab = ({ text }) => {
+const AppBarTab = ({ text, linkto }) => {
   return (
     <Pressable>
-      <Text style={styles.tab} fontSize='heading' fontWeight='bold'>
-        {text}
-      </Text>
+      <Link to={linkto}>
+        <Text style={styles.tab} fontSize='heading' fontWeight='bold'>
+          {text}
+        </Text>
+      </Link>
     </Pressable>
   );
 };
@@ -31,7 +34,8 @@ const AppBarTab = ({ text }) => {
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <AppBarTab text='repositories' />
+      <AppBarTab text='repositories' linkto='/' />
+      <AppBarTab text='sign in' linkto='/signin' />
     </View>
   );
 };

@@ -7,6 +7,8 @@ import AppBar from './AppBar';
 import SignIn from './SignIn'
 import theme from '../theme';
 
+import BodyMassIndexCalculator from './bmi';
+
 const styles = StyleSheet.create({
   container: {
     // marginTop: Constants.statusBarHeight,
@@ -24,6 +26,7 @@ const Main = () => {
         <Route path="/" element={<RepositoryList />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/bmi" element={<BodyMassIndexCalculator />} />
       </Routes>
 
     </View>

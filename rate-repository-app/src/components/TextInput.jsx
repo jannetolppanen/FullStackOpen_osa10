@@ -2,7 +2,7 @@ import { TextInput as NativeTextInput, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   input: {
-    color: 'red'
+    color: 'black'
   }
 });
 

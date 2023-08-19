@@ -3,6 +3,7 @@ import { Pressable, View, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import FormikTextInput from './FormikTextInput';
 import theme from '../theme';
+import { loginSchema } from '../validations'
 
 const styles = StyleSheet.create({
   textarea: {
@@ -27,6 +28,8 @@ const initialValues = {
   password: '',
 };
 
+
+
 const SignInForm = ({ onSubmit }) => {
   return (
     <View>
@@ -45,7 +48,7 @@ const SignIn = () => {
     console.log(username, password)
   }
 
-  return <Formik initialValues={initialValues} on onSubmit={onSubmit}>
+  return <Formik initialValues={initialValues} on onSubmit={onSubmit} validationSchema={loginSchema}>
     {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
   </Formik>
 

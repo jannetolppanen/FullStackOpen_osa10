@@ -11,10 +11,10 @@ const useRepositories = () => {
 
   const fetchRepositories = async () => {
     if (loading) {
-      console.log('loading in useRepositories');
+      // console.log('loading in useRepositories');
     }
     if (error) {
-      console.log('error in useRepositories');
+      // console.log('error in useRepositories');
     }
     if (data) {
       setRepositories(data.repositories);

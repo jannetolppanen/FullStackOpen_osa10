@@ -14,7 +14,6 @@ const useSignIn = () => {
           }
         }
       });
-      console.log(signInResult)
       return signInResult;
     } catch (error) {
       console.error(error);

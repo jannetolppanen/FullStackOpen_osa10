@@ -1,15 +1,8 @@
-
 import Button from './Button';
 import FormikTextInput from './FormikTextInput';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { Formik } from 'formik';
-import theme from '../theme';
-
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: theme.colors.primary
-  },
-});
+import { loginSchema } from '../utils/validations'
 
 const initialValues = {
   username: '',
@@ -36,15 +29,20 @@ const SignInForm = ({ onSubmit }) => {
 };
 
 const SignIn = () => {
-  const onSubmit = values => {
-    const { username, password } = values
-    console.log(username, password)
-  }
+  const onSubmit = (values) => {
+    const { username, password } = values;
+    console.log(username, password);
+  };
 
-  return <Formik initialValues={initialValues} on onSubmit={onSubmit}>
-    {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
-  </Formik>
-
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={loginSchema}
+    >
+      {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
+    </Formik>
+  );
 };
 
 export default SignIn;

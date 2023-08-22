@@ -1,4 +1,4 @@
-// import Constants from 'expo-constants';
+import Constants from 'expo-constants';
 import { StyleSheet, View } from 'react-native';
 import { Route, Routes, Navigate } from 'react-router-native';
 
@@ -11,7 +11,7 @@ import BodyMassIndexCalculator from './bmi';
 
 const styles = StyleSheet.create({
   container: {
-    // marginTop: Constants.statusBarHeight,
+    marginTop: Constants.statusBarHeight,
     flexGrow: 1,
     flexShrink: 1,
     backgroundColor: theme.colors.mainBackground

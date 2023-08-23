@@ -39,9 +39,9 @@ const SignIn = () => {
       const { data } = await signIn({ username, password });
       const { accessToken } = data.authenticate
       // await AuthStorage.setAccessToken(accessToken)
-      console.log(accessToken)
+      console.log('SignIn.jsx: ',accessToken)
     } catch (e) {
-      console.log(e);
+      console.log('SignIn.jsx: ', e);
     }
   } 
 

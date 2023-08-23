@@ -3,6 +3,7 @@ import FormikTextInput from './FormikTextInput';
 import { View } from 'react-native';
 import { Formik } from 'formik';
 import { loginSchema } from '../utils/validations'
+import useSignIn from '../hooks/useSignIn';
 
 const initialValues = {
   username: '',
@@ -29,10 +30,20 @@ const SignInForm = ({ onSubmit }) => {
 };
 
 const SignIn = () => {
-  const onSubmit = (values) => {
+  const [signIn] = useSignIn();
+
+  const onSubmit = async (values) => {
     const { username, password } = values;
-    console.log(username, password);
-  };
+
+    try {
+      const { data } = await signIn({ username, password });
+      const { accessToken } = data.authenticate
+      // await AuthStorage.setAccessToken(accessToken)
+      console.log(accessToken)
+    } catch (e) {
+      console.log(e);
+    }
+  } 
 
   return (
     <Formik

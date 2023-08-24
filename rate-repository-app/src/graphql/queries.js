@@ -25,4 +25,12 @@ query Repositories {
 }
 `;
 
+export const GET_USER = gql`
+query Me {
+  me {
+    id
+    username
+  }
+}`
+
 // other queries...

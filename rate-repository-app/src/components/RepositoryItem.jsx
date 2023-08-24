@@ -32,20 +32,20 @@ const styles = StyleSheet.create({
     flex: 0,
     alignSelf: 'flex-start',
     marginTop: 5,
-    marginBottom: 5
+    marginBottom: 5,
   },
   text: {
-    marginTop: 5
-  }
+    marginTop: 5,
+  },
 });
 
 const StatItem = ({ heading, value }) => {
   return (
     <View>
-      <Text style={styles.statitem} fontWeight='bold'>
+      <Text style={styles.statitem} fontWeight='bold' testID={heading}>
         {convertToKiloFormat(value)}
       </Text>
-      <Text style={styles.statitem}>{heading}</Text>
+      <Text style={styles.statitem} >{heading}</Text>
     </View>
   );
 };
@@ -53,16 +53,18 @@ const StatItem = ({ heading, value }) => {
 const RepositoryItem = ({ item }) => {
   return (
     <View style={styles.container}>
-
-      <View style={{ flexDirection: 'row' }}>
+      <View testID='repositoryItem' style={{ flexDirection: 'row' }}>
         <Image style={styles.tinyLogo} source={{ uri: item.ownerAvatarUrl }} />
 
         <View>
-          <Text style={styles.text} fontWeight='bold'>{item.fullName}</Text>
-          <Text style={styles.text} color='textSecondary'>{item.description}</Text>
+          <Text style={styles.text} fontWeight='bold'>
+            {item.fullName}
+          </Text>
+          <Text style={styles.text} color='textSecondary'>
+            {item.description}
+          </Text>
           <Text style={styles.button}>{item.language}</Text>
         </View>
-
       </View>
 
       <View style={styles.bottomdiv}>
@@ -71,7 +73,6 @@ const RepositoryItem = ({ item }) => {
         <StatItem heading='Reviews' value={item.reviewCount} />
         <StatItem heading='Rating' value={item.ratingAverage} />
       </View>
-
     </View>
   );
 };

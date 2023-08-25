@@ -1,6 +1,5 @@
-/* eslint-disable jest/expect-expect */
-import RepositoryList, { RepositoryListContainer} from '../../components/RepositoryList';
-import { render, within, screen } from '@testing-library/react-native';
+import { RepositoryListContainer } from '../../components/RepositoryList';
+import { render, screen } from '@testing-library/react-native';
 
 describe('RepositoryList', () => {
   describe('RepositoryListContainer', () => {
@@ -48,11 +47,7 @@ describe('RepositoryList', () => {
         ],
       };
 
-      // const {debug} = render(<RepositoryListContainer repositories={repositories} />);
-      // debug()
-
       render(<RepositoryListContainer repositories={repositories} />);
-      
 
       const repositoryItems = screen.getAllByTestId('repositoryItem');
       const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
@@ -60,28 +55,29 @@ describe('RepositoryList', () => {
       expect(firstRepositoryItem).toHaveTextContent('Build forms in React,');
       expect(firstRepositoryItem).toHaveTextContent('TypeScript');
 
-      expect(secondRepositoryItem).toHaveTextContent('async-library/react-async');
-      expect(secondRepositoryItem).toHaveTextContent('Flexible promise-based React data loader');
+      expect(secondRepositoryItem).toHaveTextContent(
+        'async-library/react-async'
+      );
+      expect(secondRepositoryItem).toHaveTextContent(
+        'Flexible promise-based React data loader'
+      );
       expect(secondRepositoryItem).toHaveTextContent('JavaScript');
 
-      const forks = screen.getAllByTestId('Forks')
-      expect(forks[0]).toHaveTextContent('1.6k')      
-      expect(forks[1]).toHaveTextContent('69')
+      const forks = screen.getAllByTestId('Forks');
+      expect(forks[0]).toHaveTextContent('1.6k');
+      expect(forks[1]).toHaveTextContent('69');
 
-      const stars = screen.getAllByTestId('Stars')
-      expect(stars[0]).toHaveTextContent('21.9k')      
-      expect(stars[1]).toHaveTextContent('1.8k')
+      const stars = screen.getAllByTestId('Stars');
+      expect(stars[0]).toHaveTextContent('21.9k');
+      expect(stars[1]).toHaveTextContent('1.8k');
 
-      const rating = screen.getAllByTestId('Rating')
-      expect(rating[0]).toHaveTextContent('88')      
-      expect(rating[1]).toHaveTextContent('72')
+      const rating = screen.getAllByTestId('Rating');
+      expect(rating[0]).toHaveTextContent('88');
+      expect(rating[1]).toHaveTextContent('72');
 
-      const reviews = screen.getAllByTestId('Reviews')
-      expect(reviews[0]).toHaveTextContent('3')      
-      expect(reviews[1]).toHaveTextContent('3')
-      
-
-
+      const reviews = screen.getAllByTestId('Reviews');
+      expect(reviews[0]).toHaveTextContent('3');
+      expect(reviews[1]).toHaveTextContent('3');
     });
   });
 });

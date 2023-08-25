@@ -1,28 +1,33 @@
 import { useParams } from 'react-router-native';
 import { useQuery } from '@apollo/client';
 import RepositoryItem from './RepositoryItem';
+import ReviewList from './ReviewList';
 import { GET_REPOSITORY } from '../graphql/queries';
+import { View } from 'react-native';
 
 const SingleRepositoryView = () => {
   const { id } = useParams();
 
-  const { data, loading, error } = useQuery(GET_REPOSITORY,{
-    variables: { "repositoryId": id },
-  })
+  const { data, loading, error } = useQuery(GET_REPOSITORY, {
+    fetchPolicy: 'cache-and-network',
+    variables: { repositoryId: id },
+  });
   if (loading) {
-    return null
+    return null;
   }
 
   if (error) {
-    console.log(error)
+    console.log(error);
   }
 
   const repository = data.repository;
 
   return (
-    <RepositoryItem item={repository} githuburl />
-
+    <View>
+      <RepositoryItem item={repository} githuburl />
+      <ReviewList />
+    </View>
   );
 };
 
-export default SingleRepositoryView
+export default SingleRepositoryView;

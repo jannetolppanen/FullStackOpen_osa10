@@ -69,8 +69,16 @@ describe('RepositoryList', () => {
       expect(forks[1]).toHaveTextContent('69')
 
       const stars = screen.getAllByTestId('Stars')
-      expect(stars[0]).toHaveTextContent('21856')      
-      expect(stars[1]).toHaveTextContent('1760')
+      expect(stars[0]).toHaveTextContent('21.9k')      
+      expect(stars[1]).toHaveTextContent('1.8k')
+
+      const rating = screen.getAllByTestId('Rating')
+      expect(rating[0]).toHaveTextContent('88')      
+      expect(rating[1]).toHaveTextContent('72')
+
+      const reviews = screen.getAllByTestId('Reviews')
+      expect(reviews[0]).toHaveTextContent('3')      
+      expect(reviews[1]).toHaveTextContent('3')
       
 
 

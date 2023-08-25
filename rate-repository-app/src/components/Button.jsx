@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const Button = ({ label, onPress, disabled, style }) => {
+const Button = ({ label, onPress, disabled, style, testID }) => {
   const buttonStyle = [
     styles.button,
     style,
@@ -27,7 +27,7 @@ const Button = ({ label, onPress, disabled, style }) => {
 
   return (
     <Pressable onPress={handlePress}>
-      <Text style={buttonStyle}>{label}</Text>
+      <Text style={buttonStyle} testID={testID}>{label}</Text>
     </Pressable>
   );
 };

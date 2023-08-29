@@ -1,6 +1,7 @@
 import { View, StyleSheet } from 'react-native';
 import theme from '../theme';
 import Text from './Text';
+import { format } from 'date-fns'
 
 const ReviewItem = ({ item }) => {
 
@@ -35,6 +36,8 @@ const ReviewItem = ({ item }) => {
     }
   });
 
+  const formattedDate = format(new Date(item.createdAt), 'dd.MM.yyyy')
+
   return (
     <View style={styles.container}>
       <View style={styles.rating}>
@@ -47,7 +50,7 @@ const ReviewItem = ({ item }) => {
 
 
 
-          <Text color="textSecondary">{item.createdAt}</Text>
+          <Text color="textSecondary">{formattedDate}</Text>
 
 
 

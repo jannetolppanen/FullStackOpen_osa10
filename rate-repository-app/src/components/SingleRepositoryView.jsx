@@ -4,6 +4,7 @@ import RepositoryItem from './RepositoryItem';
 import ReviewList from './ReviewList';
 import { GET_REPOSITORY } from '../graphql/queries';
 import { View } from 'react-native';
+import { FlatList } from 'react-native-web';
 
 const SingleRepositoryView = () => {
   const { id } = useParams();
@@ -29,5 +30,7 @@ const SingleRepositoryView = () => {
     </View>
   );
 };
+
+
 
 export default SingleRepositoryView;

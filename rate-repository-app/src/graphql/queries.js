@@ -25,6 +25,26 @@ export const GET_REPOSITORIES = gql`
   }
 `;
 
+// export const GET_REPOSITORY = gql`
+//   query Repository($repositoryId: ID!) {
+//     repository(id: $repositoryId) {
+//       id
+//       name
+//       ownerName
+//       createdAt
+//       fullName
+//       reviewCount
+//       ratingAverage
+//       forksCount
+//       stargazersCount
+//       description
+//       language
+//       ownerAvatarUrl
+//       url
+//     }
+//   }
+// `;
+
 export const GET_REPOSITORY = gql`
   query Repository($repositoryId: ID!) {
     repository(id: $repositoryId) {
@@ -41,6 +61,20 @@ export const GET_REPOSITORY = gql`
       language
       ownerAvatarUrl
       url
+      reviews {
+        edges {
+          node {
+            id
+            text
+            rating
+            createdAt
+            user {
+              id
+              username
+            }
+          }
+        }
+      }
     }
   }
 `;

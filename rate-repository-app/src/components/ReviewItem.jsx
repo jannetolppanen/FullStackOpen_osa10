@@ -1,15 +1,14 @@
-import { View, Image, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import theme from '../theme';
 import Text from './Text';
 
 const ReviewItem = ({ item }) => {
+
   const styles = StyleSheet.create({
     container: {
       backgroundColor: 'white',
       display: 'flex',
       padding: 10,
-      borderWidth: 1,
-      borderBlockColor: 'black',
       flexDirection: 'row',
     },
     rating: {

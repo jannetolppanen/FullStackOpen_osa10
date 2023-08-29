@@ -1,6 +1,5 @@
 import { View, Image, StyleSheet, Pressable } from 'react-native';
 import Text from './Text';
-// import theme from '../theme';
 import { convertToKiloFormat } from '../utils/convertToKiloFormat';
 import theme from '../theme';
 import Button from './Button';
@@ -12,6 +11,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     display: 'flex',
     padding: 10,
+    marginBottom: 10
   },
   tinyLogo: {
     width: 50,

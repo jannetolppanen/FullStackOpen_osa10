@@ -4,14 +4,14 @@ import ReviewItem from './ReviewItem';
 import { FlatList, View, StyleSheet } from 'react-native';
 
 
-const styles = StyleSheet.create({
-  separator: {
-    height: 10,
-  },
-});
+// const styles = StyleSheet.create({
+//   separator: {
+//     height: 10,
+//   },
+// });
 
 
-const ItemSeparator = () => <View style={styles.separator} />;
+// const ItemSeparator = () => <View style={styles.separator} />;
 
 export const ReviewListContainer = ({ reviews }) => {
   const reviewNodes = reviews
@@ -21,7 +21,7 @@ export const ReviewListContainer = ({ reviews }) => {
     return (
       <FlatList
         data={reviewNodes}
-        ItemSeparatorComponent={ItemSeparator}
+        // ItemSeparatorComponent={ItemSeparator}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <ReviewItem item={item} />

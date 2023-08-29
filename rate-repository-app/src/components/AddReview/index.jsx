@@ -5,6 +5,7 @@ import Button from '../Button';
 import { reviewSchema } from '../../utils/validations';
 import { useMutation } from '@apollo/client';
 import { CREATE_REVIEW } from '../../graphql/mutations';
+import { useNavigate } from 'react-router-native';
 
 export const initialValues = {
   ownerName: '',
@@ -44,6 +45,7 @@ export const AddReviewForm = ({ onSubmit }) => {
 
 const AddReview = () => {
   const [createReview] = useMutation(CREATE_REVIEW);
+  const navigate = useNavigate()
 
   const onSubmit = async (values) => {
     const rating = parseInt(values.rating)
@@ -53,13 +55,12 @@ const AddReview = () => {
         rating: rating
       }
     };
-    console.log('payload: ',payload)
-
     try {
       const { data } = await createReview({
         variables: payload,
       });
-      console.log(data.createReview.repositoryId);
+      console.log(data.createReview.repositoryId)
+      navigate(`/repository/${data.createReview.repositoryId}`);
     } catch (error) {
       console.log('Error creating review:', error.message);
     }

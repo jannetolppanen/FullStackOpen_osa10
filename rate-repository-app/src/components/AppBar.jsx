@@ -45,7 +45,6 @@ const AppBar = () => {
     await authStorage.removeAccessToken();
     await apolloClient.resetStore();
     navigate('/');
-    console.log('Logged out user')
   };
 
   if (loading) {
@@ -53,7 +52,7 @@ const AppBar = () => {
   }
 
   if (userInfo) {
-    console.log(userInfo.username, ' is logged in ');
+    // console.log(userInfo.username, ' is logged in ');
   }
   return (
     <View style={styles.container}>

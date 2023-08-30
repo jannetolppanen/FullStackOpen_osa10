@@ -8,6 +8,7 @@ import AppBar from './AppBar';
 import SignIn from './SignIn'
 import AddReview from './AddReview';
 import theme from '../theme';
+import SignUp from './SignUp';
 
 
 const styles = StyleSheet.create({
@@ -29,6 +30,7 @@ const Main = () => {
         <Route path="*" element={<Navigate to="/" />} />
         <Route path='/repository/:id' element={<SingleRepositoryView />} />
         <Route path='addreview' element={<AddReview />} />
+        <Route path='signup' element={<SignUp />} />
       </Routes>
 
     </View>

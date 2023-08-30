@@ -65,6 +65,8 @@ const AppBar = () => {
         {!userInfo && <AppBarTab text='sign in' linkto='/signin' />}
 
         {userInfo && <AppBarTab text='logout' linkto='/' onPress={logout} />}
+
+        {!userInfo && <AppBarTab text='sign up' linkto='/signup' />}
         
       </ScrollView>
     </View>

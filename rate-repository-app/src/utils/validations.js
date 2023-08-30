@@ -29,4 +29,23 @@ const reviewSchema = yup.object().shape({
   .string()
 })
 
-export { loginSchema, reviewSchema }
+const signUpSchema = yup.object().shape({
+  username: yup.string()
+    .required('Username is required')
+    .min(5, 'Username must be at least 5 characters')
+    .max(30, 'Username cannot be more than 30 characters'),
+
+  password: yup
+  .string()
+    .required('Password is required')
+    .min(5, 'Password must be at least 5 characters')
+    .max(30, 'Password cannot be more than 50 characters'),
+
+
+    passwordConfirmation: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
+    .required('Password confirmation is required'),
+});
+
+export { loginSchema, reviewSchema, signUpSchema }

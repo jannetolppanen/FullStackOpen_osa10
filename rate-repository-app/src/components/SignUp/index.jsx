@@ -1,13 +1,15 @@
 import { View } from 'react-native';
-import FormikTextInput from '../FormikTextInput'
-import Button from '../Button'
+import FormikTextInput from '../FormikTextInput';
+import Button from '../Button';
 import { Formik } from 'formik';
-import { signUpSchema } from '../../utils/validations'
+import { signUpSchema } from '../../utils/validations';
+import useCreateUser from '../../hooks/useCreateUser';
+import useSignIn from '../../hooks/useSignIn';
 
 const initialValues = {
   username: '',
   password: '',
-  passwordConfirmation: ''
+  passwordConfirmation: '',
 };
 
 export const SignInForm = ({ onSubmit }) => {
@@ -24,33 +26,34 @@ export const SignInForm = ({ onSubmit }) => {
         placeholder='password'
         secureTextEntry
       />
-            <FormikTextInput
+      <FormikTextInput
         placeholderTextColor='grey'
         name='passwordConfirmation'
         placeholder='password confirmation'
         secureTextEntry
       />
-      <Button testID="submit" label='Sign up' onPress={onSubmit} />
+      <Button testID='submit' label='Sign up' onPress={onSubmit} />
     </View>
   );
 };
 
 const SignUp = () => {
-  // const [signIn] = useSignIn();
+  const [createUser] = useCreateUser();
+  const [signIn] = useSignIn();
 
   const onSubmit = async (values) => {
-    console.log(values)
-  //   const { username, password } = values;
+    const { username, password } = values;
 
-  //   try {
-  //     const { data } = await signIn({ username, password });
-  //     const { accessToken } = data.authenticate
-  //     console.log('SignIn.jsx: ',accessToken)
-  //   } catch (e) {
-  //     console.log('SignIn.jsx: ', e);
-  //   }
-  // } 
-  }
+    try {
+      await createUser({
+        username,
+        password,
+      });
+      await signIn({ username, password });
+    } catch (error) {
+      console.error('Signup failed: ', error);
+    }
+  };
 
   return (
     <Formik
@@ -63,5 +66,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp
-
+export default SignUp;

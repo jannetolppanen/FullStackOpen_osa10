@@ -1,24 +1,34 @@
-import {Picker} from '@react-native-picker/picker';
-import { useState } from 'react';
+import { Picker } from '@react-native-picker/picker';
 
-const Filter = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState();
-
-
+const Filter = ({ setOrderBy, setOrderDirection, pickerValue, setPickerValue }) => {
+  
   return (
-
     <Picker
     mode='dropdown'
-  selectedValue={selectedLanguage}
-  onValueChange={(itemValue, itemIndex) =>
-    setSelectedLanguage(itemValue)
-  }>
-  <Picker.Item label="Latest repositories" value="java" />
-  <Picker.Item label="Highest rated repositories" value="js" />
-  <Picker.Item label="Lowest rated repositories" value="js" />
-</Picker>
-
+    selectedValue={pickerValue}
+    onValueChange={(itemValue) => {
+      if (itemValue === 'latest') {
+        setOrderDirection('DESC')
+        setOrderBy('CREATED_AT')
+        setPickerValue('latest')
+      }
+      if (itemValue === 'highest') {
+        setOrderDirection('DESC')
+        setOrderBy('RATING_AVERAGE')
+        setPickerValue('highest')
+      }
+      if (itemValue === 'lowest') {
+        setOrderDirection('ASC')
+        setOrderBy('RATING_AVERAGE')
+        setPickerValue('lowest')
+      }      
+    }}
+    >
+      <Picker.Item label='Latest repositories' value='latest' />
+      <Picker.Item label='Highest rated repositories' value='highest' />
+      <Picker.Item label='Lowest rated repositories' value='lowest' />
+    </Picker>
   );
 };
 
-export default Filter;
+export default Filter

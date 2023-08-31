@@ -1,7 +1,7 @@
 import { FlatList, View, StyleSheet } from 'react-native';
 import useRepositories from '../hooks/useRepositories';
 import RepositoryItem from './RepositoryItem';
-import { Picker } from '@react-native-picker/picker';
+import Filter from './Filter';
 import { useState } from 'react';
 
 
@@ -12,37 +12,6 @@ const styles = StyleSheet.create({
 });
 
 const ItemSeparator = () => <View style={styles.separator} />;
-
-const Filter = ({ setOrderBy, setOrderDirection, pickerValue, setPickerValue }) => {
-  
-  return (
-    <Picker
-    mode='dropdown'
-    selectedValue={pickerValue}
-    onValueChange={(itemValue) => {
-      if (itemValue === 'latest') {
-        setOrderDirection('DESC')
-        setOrderBy('CREATED_AT')
-        setPickerValue('latest')
-      }
-      if (itemValue === 'highest') {
-        setOrderDirection('DESC')
-        setOrderBy('RATING_AVERAGE')
-        setPickerValue('highest')
-      }
-      if (itemValue === 'lowest') {
-        setOrderDirection('ASC')
-        setOrderBy('RATING_AVERAGE')
-        setPickerValue('lowest')
-      }      
-    }}
-    >
-      <Picker.Item label='Latest repositories' value='latest' />
-      <Picker.Item label='Highest rated repositories' value='highest' />
-      <Picker.Item label='Lowest rated repositories' value='lowest' />
-    </Picker>
-  );
-};
 
 export const RepositoryListContainer = ({ repositories, orderBy, setOrderBy, setOrderDirection }) => {
   const [ pickerValue, setPickerValue ] = useState('latest')

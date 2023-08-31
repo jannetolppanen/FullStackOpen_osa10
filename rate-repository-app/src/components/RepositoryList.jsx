@@ -44,15 +44,13 @@ const Filter = ({ setOrderBy, setOrderDirection, pickerValue, setPickerValue }) 
   );
 };
 
-export const RepositoryListContainer = ({ repositories }) => {
-  const [ orderBy, setOrderBy ] = useState('DESC');
-  const [ orderDirection, setOrderDirection ] = useState('CREATED_AT')
+export const RepositoryListContainer = ({ repositories, orderBy, setOrderBy, setOrderDirection }) => {
   const [ pickerValue, setPickerValue ] = useState('latest')
   
   const repositoryNodes = repositories
-    ? repositories.edges.map((edge) => edge.node)
-    : [];
-
+  ? repositories.edges.map((edge) => edge.node)
+  : [];
+  
   return (
     <View>
       <FlatList
@@ -61,15 +59,17 @@ export const RepositoryListContainer = ({ repositories }) => {
         keyExtractor={(item) => item.id}
         ListHeaderComponent={<Filter orderBy={orderBy} setOrderBy={setOrderBy} setOrderDirection={setOrderDirection} pickerValue={pickerValue} setPickerValue={setPickerValue} />}
         renderItem={({ item }) => <RepositoryItem item={item} />}
-      />
+        />
     </View>
   );
 };
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
+  const [ orderBy, setOrderBy ] = useState('CREATED_AT');
+  const [ orderDirection, setOrderDirection ] = useState('DESC')
+  const { repositories } = useRepositories({ orderBy, orderDirection });
 
-  return <RepositoryListContainer repositories={repositories} />;
+  return <RepositoryListContainer repositories={repositories} orderBy={orderBy} setOrderBy={setOrderBy} setOrderDirection={setOrderDirection} />;
 };
 
 export default RepositoryList;

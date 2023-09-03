@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_USER } from '../graphql/queries';
 
-const useGetUser = () => {
+const useGetUser = (includeReviews) => {
   const [userInfo, setUserInfo] = useState(null);
   const { data, error, loading } = useQuery(GET_USER, {
     fetchPolicy: 'cache-and-network',
+    variables: includeReviews !== null ? { includeReviews : true} : {includeReviews: false},
   });
 
   const fetchUser = async () => {
@@ -24,7 +25,7 @@ const useGetUser = () => {
     fetchUser();
   }, [data]);
 
-  return { userInfo, loading };
+  return { userInfo, loading, data };
 };
 
 export default useGetUser;

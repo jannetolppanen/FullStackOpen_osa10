@@ -1,6 +1,6 @@
 import { Searchbar } from 'react-native-paper';
 
-const SearchBar = ({ searchKeyword, setsearchKeyword, debouncedSearchKeyword }) => {
+const SearchBar = ({ searchKeyword, setsearchKeyword }) => {
   const onChangeSearch = (query) => setsearchKeyword(query);
 
   return (

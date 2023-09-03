@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-native';
 import useReviews from '../hooks/useReviews';
 import ReviewItem from './ReviewItem';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList } from 'react-native';
 
 
 // const styles = StyleSheet.create({
@@ -38,6 +38,7 @@ const ReviewList = () => {
   const id = useParams();
 
   const { reviews } = useReviews(id);
+
   if (!reviews) return null;
 
   return <ReviewListContainer reviews={reviews} />;

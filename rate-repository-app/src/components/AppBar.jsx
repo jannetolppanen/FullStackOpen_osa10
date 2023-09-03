@@ -62,6 +62,8 @@ const AppBar = () => {
 
         {userInfo && <AppBarTab text='create a review' linkto='/addreview' />}
 
+        {userInfo && <AppBarTab text='my reviews' linkto='/myreviews' />}
+
         {!userInfo && <AppBarTab text='sign in' linkto='/signin' />}
 
         {userInfo && <AppBarTab text='logout' linkto='/' onPress={logout} />}
